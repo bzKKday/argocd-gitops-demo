@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: n8n
+  namespace: argocd
+spec:
+  destination:
+    name: in-cluster
+    namespace: n8n
+  project: default
+  source:
+    path: apps/n8n
+    repoURL: https://github.com/bzKKday/argocd-gitops-demo
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
